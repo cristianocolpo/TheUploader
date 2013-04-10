@@ -12,7 +12,8 @@ if(!isset($_FILES['file1']) || $_FILES['file1']['size']==0){
        $error = 1;
        $errore = $errore_in."Nessun file selezionato per l'upload".$errore_end;
 }elseif($_FILES['file1']['size']>$dimensione_massima){
-       echo $errore_in."Il file selezionato per l'upload supera dimensione massima di $dimensione_massima_Kb Kb".$errore_end;
+       $error = 1;
+       $errore.= $errore_in."Il file selezionato per l'upload supera dimensione massima di $dimensione_massima_Kb Kb".$errore_end;
 }else{
        $random=rand(0000,9999);
        $nome_file=$random.$_FILES['file1']['name'];
@@ -20,10 +21,12 @@ if(!isset($_FILES['file1']) || $_FILES['file1']['size']==0){
        if($filtrare==1){
                $estensione = strtolower(substr($nome_file, strrpos($nome_file, "."), strlen($nome_file)-strrpos($nome_file, ".")));
                if(!in_array($estensione,$array_estensioni_ammesse)){
+                       $error = 1;
                        $errore.=$errore_in."Upload file non ammesso. Estensioni ammesse: ".implode(", ",$array_estensioni_ammesse).$errore_end."<br/>";
                }
        }
        if(!file_exists($cartella_upload)){
+               $error = 1; 
                $errore.=$errore_in."La cartella di destinazione non esiste</br>".$errore_end;
        }
        
