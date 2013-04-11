@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Dumpshare</a>
+          <a class="brand" href="#">TheUploader</a>
           <div class="nav-collapse collapse navbar-responsive-collapse">
             <ul class="nav">
               <li class="active"><a href="dumpshare.php">Home</a></li>
